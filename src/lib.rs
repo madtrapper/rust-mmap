@@ -321,7 +321,7 @@ impl MemoryMap {
                                    flProtect)
             };
             match r as usize {
-                0 => Err(ErrVirtualAlloc()),
+                0 => Err(ErrVirtualAlloc(errno())),
                 _ => Ok(MemoryMap {
                    data: r as *mut u8,
                    len: len,
